@@ -1,0 +1,3 @@
+# ignore spark files
+derby.log
+metastore_db
