@@ -1,3 +1,11 @@
 # ignore spark files
 derby.log
 metastore_db
+
+# Useless data
+samples/*.csv
+models/*
+
+
+# python pyc files
+*.pyc
