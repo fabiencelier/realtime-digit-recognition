@@ -9,3 +9,6 @@ models/*
 
 # python pyc files
 *.pyc
+.eric6project/
+*.e4p
+
