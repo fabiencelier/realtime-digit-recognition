@@ -6,7 +6,7 @@ from pyspark.ml.feature import VectorAssembler
 
 
 def assemble(df,  column_prefix):
-    """ >Assemble a dataset to vector.
+    """ Assemble a dataset to vector.
     
     Args:
         df: the dataset to assemble.
@@ -86,9 +86,7 @@ def json_to_dataset(spark, json):
     # struct = StructType([StructField("features", ArrayType(), True)])
     row = Row(feature=json['data'])
     df = spark.createDataFrame(row)
-    df.show()
     df = assemble(df, '_').select('features')
-    df.show()
     return df
 
 

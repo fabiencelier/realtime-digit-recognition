@@ -90,7 +90,7 @@ def main(argv):
         sys.exit(2)
     spark = start_spark_instance()
     model = load_train_evaluate(spark,  100)
-    save_model(model, 'models/modelX')
+    save_model(model, 'models/model100')
 
 
 if __name__ == '__main__':

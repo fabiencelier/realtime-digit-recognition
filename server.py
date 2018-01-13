@@ -8,6 +8,8 @@ from flask import Flask
 from flask import request
 from flask import abort
 from flask import jsonify
+from flask_cors import CORS
+
 
 from train import read_dataset
 from spark_helper import start_spark_instance
@@ -41,6 +43,7 @@ def start_rest_server(model,  spark):
 
     """
     app = Flask(__name__)
+    CORS(app)
 
     @app.route('/picture', methods=['POST'])
     def evaluate_picture():
@@ -49,9 +52,11 @@ def start_rest_server(model,  spark):
         single_line_df = json_to_dataset(spark, request.json)
         result = model.transform(single_line_df)
         predictions = result.select('prediction').collect()[0].prediction
+        print('prediction:',predictions);
         return jsonify({'predictions': predictions}), 201
         
-    app.run(debug=True)
+    app.run(host="192.168.1.15",port=5000,debug=True)
+    #app.run(debug=True)
     
 def main(argv):
     """ Main function."""
@@ -60,10 +65,10 @@ def main(argv):
     spark = start_spark_instance()
 
     # Load model
-    model_path = 'models/model3'
+    model_path = 'models/model100'
     model = load_model(model_path, spark)
     #df_test = read_dataset(spark, 'samples/mnist_test.csv')
-   # result = model.transform(df_test)
+    #result = model.transform(df_test)
     #predictions = result.select('prediction', 'label')
     #evaluator = MulticlassClassificationEvaluator(metricName='accuracy')
     #print str(evaluator.evaluate(predictions))

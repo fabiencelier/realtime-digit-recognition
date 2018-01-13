@@ -4,21 +4,28 @@
     <meta charset='utf-8'>
     <title>Image Recognition</title>
     <link rel="stylesheet" href="styles.css">
-    <script type='text/javascript' src='clear.js'></script>
     <script type='text/javascript' src='guess.js'></script>
+    <script type='text/javascript' src='clear.js'>clear();</script>
   </head>
-  <body>
-    <div> 
-      <div id='canvas'>Draw a digit (0-9)<br/></div>
+  <body >
+	<div class="main">
+    <div class="pannel"onload="clear();"> 
+      <div id='canvas' onMouseUp="guess();"><h3>Draw a digit (0-9)</h3></div>
       <div id='middle_buttons'>
         <button onClick='clearCanvas();'>clear</button>
         <button onClick='guess();'>guess</button>
       </div>
     </div>
-	<div>
+    <div class="pannel">
+        <h3>Pixelized image</h3>
+		<div id=pixelized>		
+		</div>
+    </div>
+	<div class="pannel">
 		<h3>Current Guess</h3>
-		<p id="answer">?</p>
+		<div id="answer">?</div>
 	</div>
+    </div>
   </body>
   <script type='text/javascript' src='init.js'></script>
 </html>

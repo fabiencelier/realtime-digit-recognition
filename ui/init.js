@@ -56,4 +56,5 @@
     var container = document.getElementById('canvas');
     const canvas = init(container, 28*8, 28*8, '#FFFFFF');
 
+    clearPixels();
 })();
